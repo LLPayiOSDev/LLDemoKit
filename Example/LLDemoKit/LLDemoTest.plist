@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>footerTitle</key>
+	<string>NEXT</string>
+	<key>headerTitle</key>
+	<string>这是测试标题</string>
+	<key>detail</key>
+	<string>Describe the API</string>
+	<key>downloadUrl</key>
+	<string>https://www.pgyer.com/llios</string>
+	<key>textFields</key>
+	<array>
+		<dict>
+			<key>sectionHeader</key>
+			<string>Necessary</string>
+			<key>sectionFooter</key>
+			<string>The required parameters of API </string>
+			<key>mustPass</key>
+			<string>1</string>
+			<key>fields</key>
+			<array>
+				<string>oid_plat</string>
+				<string>api_version</string>
+				<string>sign_type</string>
+				<string>no_order</string>
+				<string>dt_order</string>
+				<string>shareing_data</string>
+				<string>bank_code</string>
+				<string>name</string>
+				<string>risk_item</string>
+				<string>id_no</string>
+				<string>card_no</string>
+				<string>bind_mob</string>
+			</array>
+		</dict>
+		<dict>
+			<key>sectionHeader</key>
+			<string>Optional</string>
+			<key>sectionFooter</key>
+			<string>The optional parameters of API</string>
+			<key>fields</key>
+			<array>
+				<string>company_tel</string>
+				<string>merchantKey</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
