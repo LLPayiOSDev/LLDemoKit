@@ -20,7 +20,6 @@
 @property (nonatomic, strong) NSString *headerTitle;
 @property (nonatomic, strong) NSString *footerTitle;
 @property (nonatomic, strong) NSString *downloadUrl;
-@property (nonatomic, strong) NSString *detail;
 @property (nonatomic, strong) NSArray *textFields;
 @property (nonatomic, strong) id target;
 @property (nonatomic, strong) NSArray *headers;

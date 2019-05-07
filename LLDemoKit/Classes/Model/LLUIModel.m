@@ -31,7 +31,6 @@
         self.plistName = interface.interfaceName;
         self.headerTitle = interface.headTitle;
         self.footerTitle = interface.nextTitle;
-        self.detail = interface.headDetail;
         self.downloadUrl = interface.downloadUrl;
         NSMutableArray *arr = @[].mutableCopy;
         NSDictionary *optionalArr =
