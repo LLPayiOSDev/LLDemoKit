@@ -74,7 +74,6 @@
 
 - (void)queryOrderWithDic:(NSDictionary *)paramDic {
     self.queryCount++;
-    NSLog(@"第%lu次查询订单", self.queryCount);
     __block NSDictionary *jsonObject = nil;
 
     NSURL *url = [NSURL URLWithString:[self queryPath]];

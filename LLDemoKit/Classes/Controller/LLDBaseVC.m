@@ -44,7 +44,7 @@
     if ([UpdateMgr respondsToSelector:sharedMgr]) {
         id mgr = [UpdateMgr performSelector:sharedMgr];
         if ([mgr respondsToSelector:method]) {
-            [UpdateMgr performSelector:method];
+            [mgr performSelector:method];
         }
     }
 }
