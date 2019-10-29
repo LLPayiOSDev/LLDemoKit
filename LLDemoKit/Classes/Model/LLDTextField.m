@@ -106,7 +106,7 @@
             }
         }
     }
-    UILabel *leftLb = ((UILabel *)self.leftView);
+    UILabel *leftLb = ((UILabel *)self.leftView.subviews.firstObject);
     [UIView animateWithDuration:0.5
                      animations:^{
                          leftLb.font = [UIFont boldSystemFontOfSize:18];
@@ -115,7 +115,7 @@
 }
 
 - (BOOL)resignFirstResponder {
-    UILabel *leftLb = ((UILabel *)self.leftView);
+    UILabel *leftLb = ((UILabel *)self.leftView.subviews.firstObject);
     [UIView animateWithDuration:0.5
                      animations:^{
                          leftLb.font = [UIFont systemFontOfSize:15];
@@ -247,7 +247,7 @@
     self.leftViewMode = UITextFieldViewModeAlways;
 }
 
-- (UILabel *)labelWithText:(NSString *)text width:(NSString *)widthString {
+- (UIView *)labelWithText:(NSString *)text width:(NSString *)widthString {
     CGFloat fontSize = [UIFont systemFontSize];
     fontSize = 15;
     NSString *modelTitle = widthString;
@@ -262,6 +262,8 @@
                                              attributes:strAttrbutes
                                                 context:nil];
     CGRect frame = newFrame.size.width > newFrameB.size.width ? newFrame : newFrameB;
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width + 8, self.frame.size.height)];
+    
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width + 8, self.frame.size.height)];
     label.textColor = [UIColor blackColor];
     label.text = text;
@@ -272,7 +274,8 @@
         label.textColor = [UIColor darkTextColor];
     }
     label.adjustsFontSizeToFitWidth = YES;
-    return label;
+    [leftView addSubview:label];
+    return leftView;
 }
 
 - (void)cacheText {

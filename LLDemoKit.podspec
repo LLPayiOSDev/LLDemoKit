@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LLDemoKit'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = '给 LianLian Pay SDK Demo 使用的工具合集.'
   s.description      = <<-DESC
   LLDemoKit是一个给连连支付SDKdemo使用的工具合集， 包括demo的构建， 环境的切换以及自定义等

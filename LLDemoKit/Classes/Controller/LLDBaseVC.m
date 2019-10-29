@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(checkUpdate)
                                                  name:@"com.lianlianpay.checkUpdate"
@@ -62,17 +63,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if (@available(iOS 11.0, *)) {
-        [self.navigationController.navigationBar setPrefersLargeTitles:YES];
-    }
     [self choooseEnvironmentMappedMerchant];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (@available(iOS 11.0, *)) {
-        [self.navigationController.navigationBar setPrefersLargeTitles:NO];
-    }
 }
 
 - (void)choooseEnvironmentMappedMerchant {
@@ -116,12 +111,18 @@
     self.view.backgroundColor = kLLDemoBGColor;
     self.navigationController.navigationBar.barTintColor = kLLDemoColor;
     NSDictionary *attributes = @{NSForegroundColorAttributeName : kLLDNavTextColor};
-    if (@available(iOS 11.0, *)) {
-        [self.navigationController.navigationBar setLargeTitleTextAttributes:attributes];
-    }
-    [self.navigationController.navigationBar setTintColor:[kLLDemoColor isEqual:[UIColor whiteColor]] ? kLLDNavTextColor : [UIColor whiteColor]];
+    
     self.navigationController.navigationBar.translucent = YES;
     [self.navigationController.navigationBar setTitleTextAttributes:attributes];
+    [self.navigationController.navigationBar setTintColor:[kLLDemoColor isEqual:[UIColor whiteColor]] ? kLLDNavTextColor : [UIColor whiteColor]];
+    if (@available(iOS 13.0, *)) {
+        UINavigationBarAppearance *apperance = [[UINavigationBarAppearance alloc] init];
+        apperance.titleTextAttributes = attributes;
+        apperance.backgroundColor = kLLDemoColor;
+//        UIBarButtonItemAppearance *bbiAppearance = [[UIBarButtonItemAppearance alloc] init];
+//        apperance.backButtonAppearance =
+        self.navigationController.navigationBar.standardAppearance = apperance;
+    }
     if (self == self.navigationController.viewControllers.firstObject) {
         UIBarButtonItem *rightBBI = [LLDUtil llBBIWithTitle:@"设置" andTarget:self action:@selector(configEnv)];
         self.navigationItem.rightBarButtonItem = rightBBI;
@@ -129,7 +130,9 @@
 }
 
 - (void)configEnv {
-    [LLDSettingVC defaultSetting].updateUrl = self.tableView.uiModel.downloadUrl;
+    if ([LLDSettingVC defaultSetting].updateUrl == nil) {
+        [LLDSettingVC defaultSetting].updateUrl = self.tableView.uiModel.downloadUrl?:@"https://www.lianlianpay.com";
+    }
     [self.navigationController pushViewController:[LLDSettingVC defaultSetting] animated:YES];
 }
 
