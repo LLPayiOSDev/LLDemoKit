@@ -321,8 +321,9 @@
     if (row >= ((NSArray *)self.model.text).count) {
         return nil;
     }
-    UILabel *label = [self labelWithText:[((NSArray *)self.model.text) objectAtIndex:row][@"picker"]
+    UIView *labelView = [self labelWithText:[((NSArray *)self.model.text) objectAtIndex:row][@"picker"]
                                    width:@"上岛咖啡盛开的积分速度快放假"];
+    UILabel *label = (UILabel *)(labelView.subviews.firstObject);
     label.textColor = [UIColor darkTextColor];
     label.textAlignment = NSTextAlignmentCenter;
     label.font = [UIFont systemFontOfSize:16];
